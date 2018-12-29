@@ -20,4 +20,8 @@ Header.propTypes = {
 	title: PropTypes.string
 }
 
+Header.defaultProps = {
+	title: 'score'
+}
+
 export default Header;

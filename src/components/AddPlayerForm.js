@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class AddPlayerForm extends React.Component {
 
@@ -25,6 +26,10 @@ class AddPlayerForm extends React.Component {
 			</form>
 		);
 	}
+}
+
+AddPlayerForm.propTypes = {
+	addPlayer: PropTypes.func
 }
 
 export default AddPlayerForm;
