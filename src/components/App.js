@@ -8,24 +8,24 @@ class App extends React.Component {
   state = {
     players: [
       {
-        name: "Guil",
+        name: "Pavel",
         score: 0,
-        id: 1
+        id: 1,
       },
       {
-        name: "Treasure",
+        name: "Natalia",
         score: 0,
-        id: 2
+        id: 2,
       },
       {
-        name: "Ashley",
+        name: "Alex",
         score: 0,
-        id: 3
+        id: 3,
       },
       {
         name: "James",
         score: 0,
-        id: 4
+        id: 4,
       }
     ]
   }
@@ -57,8 +57,6 @@ class App extends React.Component {
 //   }));
 // }
 
-
-
   handleRemovePlayer = (id) => {
     this.setState( prevState => {
       return {
@@ -68,12 +66,24 @@ class App extends React.Component {
   }
 
   handleScoreChange = (index, delta) => {
-    this.setState( prevState => ({
-      score: prevState.players[index].score += delta
+    this.setState( prevState => ({     
+      score: prevState.players[index].score += delta   
     }));
   }
 
+  isHigherScore = () => {
+      let scores = this.state.players.map(p => p.score);
+      let higherScore = Math.max(...scores);
+      if (higherScore) 
+        return higherScore;
+      else
+        return null
+  }
+
   render() {
+
+    let higherScore = this.isHigherScore()
+
     return (
       <div className="scoreboard">
         <Header 
@@ -90,7 +100,8 @@ class App extends React.Component {
             id={player.id}
             key={player.id.toString()} 
             removePlayer={this.handleRemovePlayer}
-            scoreChange={this.handleScoreChange}           
+            scoreChange={this.handleScoreChange}
+            isHigherScore={player.score === higherScore}           
           />
         )}
 
